@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blessing &amp; Tolulope — Save The Date</title>
   <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,89 +13,128 @@
   <div class="edge-bottom"></div>
   <div class="ambient"></div>
 
-  <!-- Floating flowers -->
-  <div class="flowers" aria-hidden="true">
-    <span class="flower" style="left:8%;  animation-duration:14s; animation-delay:0s;   font-size:22px;">🌸</span>
-    <span class="flower" style="left:18%; animation-duration:18s; animation-delay:3s;   font-size:16px;">🌺</span>
-    <span class="flower" style="left:30%; animation-duration:11s; animation-delay:1s;   font-size:20px;">🌸</span>
-    <span class="flower" style="left:45%; animation-duration:16s; animation-delay:6s;   font-size:14px;">✿</span>
-    <span class="flower" style="left:60%; animation-duration:13s; animation-delay:2s;   font-size:22px;">🌺</span>
-    <span class="flower" style="left:72%; animation-duration:17s; animation-delay:4.5s; font-size:18px;">🌸</span>
-    <span class="flower" style="left:83%; animation-duration:12s; animation-delay:1.5s; font-size:20px;">✿</span>
-    <span class="flower" style="left:92%; animation-duration:15s; animation-delay:7s;   font-size:16px;">🌸</span>
-    <span class="flower" style="left:3%;  animation-duration:19s; animation-delay:5s;   font-size:14px;">🌺</span>
-    <span class="flower" style="left:52%; animation-duration:10s; animation-delay:8s;   font-size:18px;">✿</span>
-  </div>
-
-  <!-- Gold sparkles -->
-  <div class="sparkles" aria-hidden="true">
-    <span style="left:12%; animation-duration:20s; animation-delay:2s;   font-size:10px;">✦</span>
-    <span style="left:35%; animation-duration:24s; animation-delay:7s;   font-size:8px;">✧</span>
-    <span style="left:65%; animation-duration:18s; animation-delay:1s;   font-size:9px;">✦</span>
-    <span style="left:88%; animation-duration:22s; animation-delay:4s;   font-size:11px;">✧</span>
+  <!-- Floating petals -->
+  <div class="petals" aria-hidden="true">
+    <span class="petal" style="left:5%;  animation-duration:12s; animation-delay:0s;   font-size:18px;">🌸</span>
+    <span class="petal" style="left:14%; animation-duration:17s; animation-delay:3s;   font-size:13px;">🌹</span>
+    <span class="petal" style="left:24%; animation-duration:10s; animation-delay:1s;   font-size:16px;">🌺</span>
+    <span class="petal" style="left:38%; animation-duration:15s; animation-delay:6s;   font-size:12px;">✿</span>
+    <span class="petal" style="left:52%; animation-duration:13s; animation-delay:2s;   font-size:18px;">🌸</span>
+    <span class="petal" style="left:65%; animation-duration:18s; animation-delay:4.5s; font-size:14px;">🌹</span>
+    <span class="petal" style="left:76%; animation-duration:11s; animation-delay:1.5s; font-size:17px;">✿</span>
+    <span class="petal" style="left:87%; animation-duration:16s; animation-delay:7s;   font-size:13px;">🌺</span>
+    <span class="petal" style="left:93%; animation-duration:14s; animation-delay:5s;   font-size:15px;">🌸</span>
+    <span class="petal" style="left:44%; animation-duration:9s;  animation-delay:8s;   font-size:12px;">🌹</span>
   </div>
 
   <main class="scene">
 
-    <!-- ENVELOPE (always visible at centre) -->
-    <div class="envelope" id="envelope"
-         onclick="openEnvelope()"
-         role="button" tabindex="0"
-         aria-label="Click to open your invitation"
-         onkeydown="if(event.key==='Enter'||event.key===' ')openEnvelope()">
+    <!-- ══════════════════════════════
+         ENVELOPE (closed state)
+    ══════════════════════════════ -->
+    <div class="envelope-wrap" id="envelopeWrap">
 
-      <div class="flap" id="flap">
-        <div class="flap-face"></div>
+      <!-- Names above envelope -->
+      <div class="env-header">
+        <p class="env-getting-married">WE ARE GETTING MARRIED</p>
+        <p class="env-couple-names">Blessing <span class="env-amp">&</span> Tolulope</p>
       </div>
 
-      <div class="env-body">
-        <div class="wax-seal" aria-hidden="true">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="28" fill="#8B1A1A" stroke="#C9A84C" stroke-width="1.5"/>
-            <circle cx="30" cy="30" r="23" fill="none" stroke="#C9A84C" stroke-width="0.6" stroke-dasharray="2 3"/>
-            <text x="30" y="26" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="9" fill="#C9A84C">B</text>
-            <text x="30" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="#C9A84C">&amp;</text>
-            <text x="30" y="48" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="9" fill="#C9A84C">T</text>
-          </svg>
+      <!-- The envelope itself -->
+      <div class="envelope" id="envelope"
+           onclick="openEnvelope()"
+           role="button" tabindex="0"
+           aria-label="Click to open your invitation"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openEnvelope()">
+
+        <!-- Flap -->
+        <div class="flap" id="flap">
+          <div class="flap-face">
+            <!-- monogram on flap -->
+            <div class="flap-mono">B&amp;T</div>
+          </div>
         </div>
-        <p class="env-names">Blessing &amp; Tolulope</p>
-      </div>
 
-      <p class="hint" id="hint">CLICK TO OPEN</p>
+        <!-- Envelope body -->
+        <div class="env-body">
+          <!-- diagonal lines done in CSS -->
+          <div class="env-seal">
+            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="23" fill="#5C1A2E" stroke="#C9A84C" stroke-width="1.2"/>
+              <circle cx="25" cy="25" r="19" fill="none" stroke="#C9A84C" stroke-width="0.5" stroke-dasharray="2 2.5"/>
+              <text x="25" y="21" text-anchor="middle" font-family="Great Vibes,cursive" font-size="7" fill="#E8C97A">B</text>
+              <text x="25" y="30" text-anchor="middle" font-family="Great Vibes,cursive" font-size="8" fill="#E8C97A">&amp;</text>
+              <text x="25" y="39" text-anchor="middle" font-family="Great Vibes,cursive" font-size="7" fill="#E8C97A">T</text>
+            </svg>
+          </div>
+        </div>
+
+        <p class="hint">CLICK ENVELOPE TO OPEN</p>
+      </div>
     </div>
 
-    <!-- LETTER (hidden until opened, then centred over faded envelope) -->
-    <div class="letter" id="letter" aria-live="polite" aria-hidden="true">
-      <div class="letter-bar"></div>
-      <div class="letter-inner">
+    <!-- ══════════════════════════════
+         OPENED CARD (revealed on click)
+    ══════════════════════════════ -->
+    <div class="card-reveal" id="cardReveal" aria-hidden="true">
 
-        <svg class="corner tl" viewBox="0 0 34 34" fill="none"><path d="M2 2L2 17M2 2L17 2" stroke="#C9A84C" stroke-width="1.2"/><circle cx="2" cy="2" r="1.5" fill="#C9A84C"/><path d="M5 5L13 13" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="corner tr" viewBox="0 0 34 34" fill="none"><path d="M2 2L2 17M2 2L17 2" stroke="#C9A84C" stroke-width="1.2"/><circle cx="2" cy="2" r="1.5" fill="#C9A84C"/><path d="M5 5L13 13" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="corner bl" viewBox="0 0 34 34" fill="none"><path d="M2 2L2 17M2 2L17 2" stroke="#C9A84C" stroke-width="1.2"/><circle cx="2" cy="2" r="1.5" fill="#C9A84C"/><path d="M5 5L13 13" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="corner br" viewBox="0 0 34 34" fill="none"><path d="M2 2L2 17M2 2L17 2" stroke="#C9A84C" stroke-width="1.2"/><circle cx="2" cy="2" r="1.5" fill="#C9A84C"/><path d="M5 5L13 13" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/></svg>
-
-        <!-- Each element gets its own reveal class, triggered by JS -->
-        <p class="letter-tag reveal-item">YOU HAVE BEEN INVITED</p>
-        <div class="divider short reveal-item"></div>
-        <p class="letter-sub reveal-item">To the wedding of</p>
-        <div class="names reveal-item">
-          Blessing
-          <span class="amp">&</span>
-          Tolulope
-        </div>
-        <div class="divider long reveal-item"></div>
-        <p class="save-label reveal-item">SAVE THE DATE</p>
-        <p class="date reveal-item">15 · 08 · 2026</p>
-        <p class="tagline reveal-item">A celebration of love &amp; forever</p>
-        <div class="ornament reveal-item">— ✦ —</div>
+      <!-- Flower decorations top -->
+      <div class="card-flowers-top" aria-hidden="true">
+        <span>🌸</span><span>🌹</span><span>✿</span><span>🌺</span><span>🌸</span>
       </div>
+
+      <!-- WE ARE GETTING MARRIED + names (repeated on card) -->
+      <div class="card-header reveal-item">
+        <p class="card-getting-married">WE ARE GETTING MARRIED</p>
+        <p class="card-couple">Blessing <span class="card-amp">&</span> Tolulope</p>
+      </div>
+
+      <!-- Two photo cards -->
+      <div class="photo-row">
+        <div class="photo-card reveal-item" style="--i:1">
+          <div class="photo-inner">
+            <!-- Placeholder — replace src with real photo path -->
+            <div class="photo-placeholder">
+              <span>💍</span>
+              <p>Bride</p>
+            </div>
+          </div>
+          <p class="photo-label">Blessing</p>
+        </div>
+
+        <div class="photo-card reveal-item" style="--i:2">
+          <div class="photo-inner">
+            <div class="photo-placeholder">
+              <span>🤵</span>
+              <p>Groom</p>
+            </div>
+          </div>
+          <p class="photo-label">Tolulope</p>
+        </div>
+      </div>
+
+      <!-- Save the date block -->
+      <div class="save-block reveal-item">
+        <div class="save-divider"></div>
+        <p class="save-label">SAVE THE DATE</p>
+        <p class="save-date">15 · 08 · 2026</p>
+        <p class="save-tagline">A celebration of love &amp; forever</p>
+        <div class="save-divider"></div>
+      </div>
+
+      <!-- Flower decorations bottom -->
+      <div class="card-flowers-bottom reveal-item" aria-hidden="true">
+        <span>🌺</span><span>✿</span><span>🌹</span><span>🌸</span><span>✿</span>
+      </div>
+
     </div>
+    <!-- /card-reveal -->
 
   </main>
 
   <!-- MUSIC PLAYER -->
-  <div class="music-player" id="musicPlayer" aria-label="Music player">
-    <button class="play-btn" id="playBtn" onclick="toggleMusic()" aria-label="Play or pause music">
+  <div class="music-player" id="musicPlayer">
+    <button class="play-btn" id="playBtn" onclick="toggleMusic()" aria-label="Play or pause">
       <svg id="iconPlay"  viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
@@ -111,7 +150,6 @@
   <audio id="music" loop>
     <source src="song.mp3" type="audio/mpeg"/>
   </audio>
-
   <div style="position:fixed;left:-9999px;bottom:-9999px;width:1px;height:1px;">
     <div id="yt-player"></div>
   </div>
