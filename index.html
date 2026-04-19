@@ -13,34 +13,33 @@
   <div class="edge-bottom"></div>
   <div class="ambient"></div>
 
-  <!-- Floating petals -->
+  <!-- Floating petals (behind everything) -->
   <div class="petals" aria-hidden="true">
-    <span class="petal" style="left:5%;  animation-duration:12s; animation-delay:0s;   font-size:18px;">🌸</span>
-    <span class="petal" style="left:14%; animation-duration:17s; animation-delay:3s;   font-size:13px;">🌹</span>
-    <span class="petal" style="left:24%; animation-duration:10s; animation-delay:1s;   font-size:16px;">🌺</span>
-    <span class="petal" style="left:38%; animation-duration:15s; animation-delay:6s;   font-size:12px;">✿</span>
-    <span class="petal" style="left:52%; animation-duration:13s; animation-delay:2s;   font-size:18px;">🌸</span>
-    <span class="petal" style="left:65%; animation-duration:18s; animation-delay:4.5s; font-size:14px;">🌹</span>
-    <span class="petal" style="left:76%; animation-duration:11s; animation-delay:1.5s; font-size:17px;">✿</span>
-    <span class="petal" style="left:87%; animation-duration:16s; animation-delay:7s;   font-size:13px;">🌺</span>
-    <span class="petal" style="left:93%; animation-duration:14s; animation-delay:5s;   font-size:15px;">🌸</span>
-    <span class="petal" style="left:44%; animation-duration:9s;  animation-delay:8s;   font-size:12px;">🌹</span>
+    <span class="petal" style="left:5%;  animation-duration:12s; animation-delay:0s;">🌸</span>
+    <span class="petal" style="left:14%; animation-duration:17s; animation-delay:3s; font-size:13px;">🌹</span>
+    <span class="petal" style="left:24%; animation-duration:10s; animation-delay:1s;">🌺</span>
+    <span class="petal" style="left:38%; animation-duration:15s; animation-delay:6s; font-size:12px;">✿</span>
+    <span class="petal" style="left:52%; animation-duration:13s; animation-delay:2s;">🌸</span>
+    <span class="petal" style="left:65%; animation-duration:18s; animation-delay:4.5s; font-size:13px;">🌹</span>
+    <span class="petal" style="left:76%; animation-duration:11s; animation-delay:1.5s;">✿</span>
+    <span class="petal" style="left:87%; animation-duration:16s; animation-delay:7s; font-size:13px;">🌺</span>
+    <span class="petal" style="left:93%; animation-duration:14s; animation-delay:5s;">🌸</span>
+    <span class="petal" style="left:44%; animation-duration:9s;  animation-delay:8s; font-size:12px;">🌹</span>
   </div>
 
+  <!-- ══════════════════════════════════════
+       MAIN SCENE — one centred container
+  ══════════════════════════════════════ -->
   <main class="scene">
 
-    <!-- ══════════════════════════════
-         ENVELOPE (closed state)
-    ══════════════════════════════ -->
-    <div class="envelope-wrap" id="envelopeWrap">
+    <!-- CLOSED: envelope + header above it -->
+    <div class="closed-state" id="closedState">
 
-      <!-- Names above envelope -->
       <div class="env-header">
-        <p class="env-getting-married">WE ARE GETTING MARRIED</p>
-        <p class="env-couple-names">Blessing <span class="env-amp">&</span> Tolulope</p>
+        <p class="env-tag">WE ARE GETTING MARRIED</p>
+        <p class="env-names">Blessing <span class="env-amp">&</span> Tolulope</p>
       </div>
 
-      <!-- The envelope itself -->
       <div class="envelope" id="envelope"
            onclick="openEnvelope()"
            role="button" tabindex="0"
@@ -50,21 +49,26 @@
         <!-- Flap -->
         <div class="flap" id="flap">
           <div class="flap-face">
-            <!-- monogram on flap -->
-            <div class="flap-mono">B&amp;T</div>
+            <span class="flap-mono">B&amp;T</span>
           </div>
         </div>
 
-        <!-- Envelope body -->
+        <!-- Envelope body (ivory/cream coloured) -->
         <div class="env-body">
-          <!-- diagonal lines done in CSS -->
+          <!-- SVG fold lines — not filled shapes -->
+          <svg class="fold-lines" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="240" x2="180" y2="120" stroke="rgba(92,26,46,0.15)" stroke-width="1"/>
+            <line x1="360" y1="240" x2="180" y2="120" stroke="rgba(92,26,46,0.15)" stroke-width="1"/>
+          </svg>
+
+          <!-- Wax seal -->
           <div class="env-seal">
-            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="25" cy="25" r="23" fill="#5C1A2E" stroke="#C9A84C" stroke-width="1.2"/>
-              <circle cx="25" cy="25" r="19" fill="none" stroke="#C9A84C" stroke-width="0.5" stroke-dasharray="2 2.5"/>
-              <text x="25" y="21" text-anchor="middle" font-family="Great Vibes,cursive" font-size="7" fill="#E8C97A">B</text>
-              <text x="25" y="30" text-anchor="middle" font-family="Great Vibes,cursive" font-size="8" fill="#E8C97A">&amp;</text>
-              <text x="25" y="39" text-anchor="middle" font-family="Great Vibes,cursive" font-size="7" fill="#E8C97A">T</text>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="28" fill="#5C1A2E" stroke="#C9A84C" stroke-width="1.5"/>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="#C9A84C" stroke-width="0.6" stroke-dasharray="2 3"/>
+              <text x="30" y="25" text-anchor="middle" font-family="Great Vibes,cursive" font-size="9" fill="#E8C97A">B</text>
+              <text x="30" y="36" text-anchor="middle" font-family="Great Vibes,cursive" font-size="10" fill="#E8C97A">&amp;</text>
+              <text x="30" y="47" text-anchor="middle" font-family="Great Vibes,cursive" font-size="9" fill="#E8C97A">T</text>
             </svg>
           </div>
         </div>
@@ -72,63 +76,87 @@
         <p class="hint">CLICK ENVELOPE TO OPEN</p>
       </div>
     </div>
+    <!-- /closed-state -->
 
-    <!-- ══════════════════════════════
-         OPENED CARD (revealed on click)
-    ══════════════════════════════ -->
-    <div class="card-reveal" id="cardReveal" aria-hidden="true">
+    <!-- OPENED: full invitation card -->
+    <div class="card" id="card" aria-hidden="true">
 
-      <!-- Flower decorations top -->
-      <div class="card-flowers-top" aria-hidden="true">
-        <span>🌸</span><span>🌹</span><span>✿</span><span>🌺</span><span>🌸</span>
-      </div>
+      <!-- Coloured top bar done in CSS ::before -->
 
-      <!-- WE ARE GETTING MARRIED + names (repeated on card) -->
-      <div class="card-header reveal-item">
-        <p class="card-getting-married">WE ARE GETTING MARRIED</p>
-        <p class="card-couple">Blessing <span class="card-amp">&</span> Tolulope</p>
-      </div>
+      <div class="card-inner">
 
-      <!-- Two photo cards -->
-      <div class="photo-row">
-        <div class="photo-card reveal-item" style="--i:1">
-          <div class="photo-inner">
-            <!-- Placeholder — replace src with real photo path -->
-            <div class="photo-placeholder">
-              <span>💍</span>
-              <p>Bride</p>
-            </div>
-          </div>
-          <p class="photo-label">Blessing</p>
+        <!-- Flowers top -->
+        <div class="flowers-row ri">
+          <span>🌸</span><span>🌹</span><span>🌺</span><span>✿</span><span>🌸</span>
         </div>
 
-        <div class="photo-card reveal-item" style="--i:2">
-          <div class="photo-inner">
-            <div class="photo-placeholder">
-              <span>🤵</span>
-              <p>Groom</p>
-            </div>
-          </div>
-          <p class="photo-label">Tolulope</p>
+        <!-- Header -->
+        <div class="card-header ri">
+          <p class="card-tag">WE ARE GETTING MARRIED</p>
+          <p class="card-names">Blessing <span class="card-amp">&</span> Tolulope</p>
         </div>
-      </div>
 
-      <!-- Save the date block -->
-      <div class="save-block reveal-item">
-        <div class="save-divider"></div>
-        <p class="save-label">SAVE THE DATE</p>
-        <p class="save-date">15 · 08 · 2026</p>
-        <p class="save-tagline">A celebration of love &amp; forever</p>
-        <div class="save-divider"></div>
-      </div>
+        <!-- Thin divider -->
+        <div class="thin-divider ri"></div>
 
-      <!-- Flower decorations bottom -->
-      <div class="card-flowers-bottom reveal-item" aria-hidden="true">
-        <span>🌺</span><span>✿</span><span>🌹</span><span>🌸</span><span>✿</span>
-      </div>
+        <!-- Photo cards -->
+        <div class="photo-row">
+          <div class="photo-card ri" style="--d: 0ms">
+            <div class="photo-frame">
+              <!--
+                TO ADD REAL PHOTO:
+                Replace the div.photo-ph below with:
+                <img src="bride.jpg" alt="Blessing"/>
+              -->
+              <div class="photo-ph">
+                <div class="photo-icon">👰🏾</div>
+                <p>Blessing</p>
+              </div>
+              <div class="photo-corner tl"></div>
+              <div class="photo-corner tr"></div>
+              <div class="photo-corner bl"></div>
+              <div class="photo-corner br"></div>
+            </div>
+            <p class="photo-name">Blessing</p>
+          </div>
 
-    </div>
-    <!-- /card-reveal -->
+          <div class="photo-card ri" style="--d: 180ms">
+            <div class="photo-frame">
+              <!--
+                TO ADD REAL PHOTO:
+                Replace the div.photo-ph below with:
+                <img src="groom.jpg" alt="Tolulope"/>
+              -->
+              <div class="photo-ph">
+                <div class="photo-icon">🤵🏾</div>
+                <p>Tolulope</p>
+              </div>
+              <div class="photo-corner tl"></div>
+              <div class="photo-corner tr"></div>
+              <div class="photo-corner bl"></div>
+              <div class="photo-corner br"></div>
+            </div>
+            <p class="photo-name">Tolulope</p>
+          </div>
+        </div>
+        <!-- /photo-row -->
+
+        <!-- Save the date -->
+        <div class="save-block ri">
+          <div class="rose-divider"></div>
+          <p class="save-tag">SAVE THE DATE</p>
+          <p class="save-date">15 · 08 · 2026</p>
+          <p class="save-tagline">A celebration of love &amp; forever</p>
+          <div class="rose-divider"></div>
+        </div>
+
+        <!-- Flowers bottom -->
+        <div class="flowers-row ri">
+          <span>🌺</span><span>✿</span><span>🌹</span><span>🌸</span><span>✿</span>
+        </div>
+
+      </div><!-- /card-inner -->
+    </div><!-- /card -->
 
   </main>
 
