@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────
    Blessing & Tolulope — Save The Date v3
-   script.js
+   script.js (fixed)
 ───────────────────────────────────────────── */
 
 let isOpened  = false;
@@ -19,27 +19,37 @@ function openEnvelope() {
   isOpened = true;
 
   document.body.classList.add('opened');
-  document.getElementById('cardReveal').setAttribute('aria-hidden', 'false');
+  document.getElementById('card').setAttribute('aria-hidden', 'false');
 
-  /* Stagger the reveal-items inside the card */
   revealItems();
-
-  /* Start music after card fully appears */
-  setTimeout(startMusic, 2000);
+  setTimeout(startMusic, 2200);
 }
 
 /* ═══════════════════════════════════════════
    SEQUENTIAL REVEAL
+   Finds all .ri and .photo-card elements inside
+   the card and staggers them with .show class
 ═══════════════════════════════════════════ */
 function revealItems() {
-  const items = document.querySelectorAll('.reveal-item');
-  const BASE  = 1000; /* card appears ~0.9s after click */
-  const GAP   = 220;
+  /* Reveal general .ri items */
+  const riItems = document.querySelectorAll('#card .ri');
+  /* Reveal photo cards separately (they overlap with .ri flow) */
+  const photoCards = document.querySelectorAll('#card .photo-card');
 
-  items.forEach((el, i) => {
+  const BASE_DELAY = 900;  /* card transition ~0.85s */
+  const STAGGER    = 220;
+
+  riItems.forEach((el, i) => {
     setTimeout(() => {
-      el.classList.add('visible');
-    }, BASE + i * GAP);
+      el.classList.add('show');
+    }, BASE_DELAY + i * STAGGER);
+  });
+
+  /* Photo cards stagger after the header reveals */
+  photoCards.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('show');
+    }, BASE_DELAY + 2 * STAGGER + i * STAGGER);
   });
 }
 
