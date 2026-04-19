@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────
-   Blessing & Tolulope — Save The Date
+   Blessing & Tolulope — Save The Date v3
    script.js
 ───────────────────────────────────────────── */
 
@@ -19,30 +19,27 @@ function openEnvelope() {
   isOpened = true;
 
   document.body.classList.add('opened');
-  document.getElementById('letter').setAttribute('aria-hidden', 'false');
+  document.getElementById('cardReveal').setAttribute('aria-hidden', 'false');
 
-  /* Reveal letter text items one by one after letter appears */
+  /* Stagger the reveal-items inside the card */
   revealItems();
 
-  /* Start music after letter fully visible */
-  setTimeout(startMusic, 1800);
+  /* Start music after card fully appears */
+  setTimeout(startMusic, 2000);
 }
 
 /* ═══════════════════════════════════════════
-   SEQUENTIAL TEXT REVEAL
-   Each .reveal-item gets .visible with staggered delay
+   SEQUENTIAL REVEAL
 ═══════════════════════════════════════════ */
 function revealItems() {
   const items = document.querySelectorAll('.reveal-item');
-  /* Letter transition finishes ~1.7s after click.
-     Start revealing items from 1.7s, each 180ms apart */
-  const BASE_DELAY = 1700;
-  const STAGGER    = 200;
+  const BASE  = 1000; /* card appears ~0.9s after click */
+  const GAP   = 220;
 
   items.forEach((el, i) => {
     setTimeout(() => {
       el.classList.add('visible');
-    }, BASE_DELAY + i * STAGGER);
+    }, BASE + i * GAP);
   });
 }
 
@@ -52,25 +49,18 @@ function revealItems() {
 function startMusic() {
   if (!musicEl) { initYouTube(); return; }
 
-  musicEl.volume = 0.75;
+  musicEl.volume = 0.72;
 
   const p = musicEl.play();
   if (p !== undefined) {
     p.then(() => setPlayingUI(true))
-     .catch(() => {
-       /* Autoplay blocked — player is visible so user can tap play */
-       setPlayingUI(false);
-       initYouTube();
-     });
+     .catch(() => { setPlayingUI(false); initYouTube(); });
   }
 
   musicEl.addEventListener('play',  () => setPlayingUI(true));
   musicEl.addEventListener('pause', () => setPlayingUI(false));
   musicEl.addEventListener('ended', () => setPlayingUI(false));
-  musicEl.addEventListener('error', () => {
-    console.warn('Local audio failed — YouTube fallback.');
-    initYouTube();
-  });
+  musicEl.addEventListener('error', () => { initYouTube(); });
 }
 
 function toggleMusic() {
@@ -107,8 +97,8 @@ let ytAPIReady = false;
 function initYouTube() {
   if (document.getElementById('yt-script')) return;
   const tag = document.createElement('script');
-  tag.id    = 'yt-script';
-  tag.src   = 'https://www.youtube.com/iframe_api';
+  tag.id  = 'yt-script';
+  tag.src = 'https://www.youtube.com/iframe_api';
   document.head.appendChild(tag);
 }
 
@@ -117,7 +107,7 @@ window.onYouTubeIframeAPIReady = function () {
   ytPlayer = new YT.Player('yt-player', {
     width: '1', height: '1',
     videoId: YT_VID,
-    playerVars: { autoplay: 1, controls: 0, rel: 0, loop: 1, playlist: YT_VID },
+    playerVars: { autoplay:1, controls:0, rel:0, loop:1, playlist:YT_VID },
     events: {
       onReady(e)       { e.target.setVolume(70); e.target.playVideo(); },
       onStateChange(e) {
